@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from '../styles/Elso.module.scss';
+import Bloglist from "./bloglist";
 
 const Home = () => {
 
@@ -10,13 +11,7 @@ const Home = () => {
     ]);
     return ( 
         <div className="home">
-            {blogs.map( (blog) => (
-                <div className = {styles.blogprev} key = {blog.id}>
-                    <h2> {blog.title} </h2>
-                    <p> Written by {blog.author} </p>
-                </div>
-             ) )}
-             
+           <Bloglist blogs = {blogs} title = "All Blogs"/>
         </div>
      );
 }
