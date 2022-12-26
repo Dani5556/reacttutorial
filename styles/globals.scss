@@ -29,7 +29,7 @@
     color: white;
     background-color: #f1356d;
     border-radius: 8px;
-    transition: all 0.3s ease-out 0.2s;
+    transition: all 0.3s ;
     
   }
 }
@@ -38,9 +38,13 @@
 }
 .newbloglink:hover {
   
-  background-color:crimson;
+  background-color:rgb(247, 28, 72);
   color : #f2f2f2 !important;
   border-radius: 70px;
+  padding: 5px 10px 5px 10px;
+  border: 2px solid rgb(150, 9, 9);
+  font-size: 17px;
+  
 }
 
 .content {
