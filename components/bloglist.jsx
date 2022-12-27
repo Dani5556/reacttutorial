@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import styles from '../styles/Elso.module.scss';
 
 const Bloglist = (props) => {
@@ -10,6 +10,9 @@ const Bloglist = (props) => {
         //     {title: 'Fishing tips', body: 'lorem ipsum..', author: 'mario', id: 3}
         // ]);     
         //                                    lehet igy is te props-al csinalta
+      
+      
+      useEffect
         return ( 
             <div className="bloglist">
                 <h2>{title}</h2>
@@ -17,6 +20,7 @@ const Bloglist = (props) => {
                     <div className = {styles.blogprev} key = {blog.id}>
                         <h2> {blog.title} </h2>
                         <p> Written by {blog.author} </p>
+                        <button onClick = { () => props.handleDelete(blog.id)}>Delete Blog</button>
                     </div>
                  ) )}
                  
