@@ -7,8 +7,6 @@ const Bloglist = (props) => {
     const title = props.title;
        
         
-      
-      
         return ( 
             <div className="bloglist">
                 <h2>{title}</h2>
