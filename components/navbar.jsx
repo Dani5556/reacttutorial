@@ -2,27 +2,32 @@ import Link from "next/link";
 import {signIn,signOut, useSession} from 'next-auth/react'
 const Navbar = () => {
     const {data : session, loading} = useSession();
+    console.log(session, loading);
     return ( 
-        <nav className="navbar">
+        <nav className="navi">
+        
+        <div className={`navbar ${!session && loading ? 'loading' : 'loaded'}`}>
             <h1>The Dojo class</h1>
             <div className="links">
-                <a href="/">Home</a>
+                <Link href="/" className="homebutton">Home</Link>
                 <Link href="/create" className="newbloglink">New Blog</Link>
 
-                { !loading && !session && (<Link href='/api/auth/signin'>
-                    <p onClick={e=> {
+                { !loading && !session && (<Link className = "in"href='/api/auth/signin'
+                     onClick={e=> {
                     e.preventDefault();
                     signIn();
-                }}>Sign In</p>
+                }}>Sign In
                 </Link>)}
 
-               { session &&( <Link href="/api/auth/singout">
-                    <p onClick={e=> {
+               { session &&( <Link className="out" href="/api/auth/singout"
+                    onClick={e=> {
                     e.preventDefault();
                     signOut();
-                }}>Sign Out</p>
+                }}>Sign Out
                 </Link>)}
-            </div>
+            </div>  
+                <div className="acc">Account</div>
+        </div>
         </nav>
      );
 }

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import useFetch from "../components/usefetch";
+import {getSession, signIn} from 'next-auth/react';
 const Create = () => {
     const  [title, setTitle] = useState('');
     const  [body, setBody] = useState('');
@@ -24,6 +25,23 @@ const Create = () => {
             router.push('/' + blogid);
             
         })
+    }
+
+    const [loading, setLoading] = useState(true);
+    useEffect(() =>{
+        const securePage = async() =>{
+            const session = await getSession();
+            if(!session){
+                signIn();
+            } else {
+                setLoading(false);
+            }
+        }
+        securePage();
+    }, [])
+
+    if(loading) {
+        return <div className="signload"><h2>Loading... Please wait</h2></div>
     }
     return ( 
         <div className="create">
