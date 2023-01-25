@@ -26,7 +26,7 @@ const Navbar = () => {
                 }}>Sign Out
                 </Link>)}
             </div>  
-                <div className="acc">Account</div>
+                <Link className="acc" href='../account'>Account</Link>
         </div>
         </nav>
      );

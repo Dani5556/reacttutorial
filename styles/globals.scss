@@ -13,10 +13,13 @@
   justify-content:space-around;
   max-width: 50rem;
 }
-.acc{
-  
-}
 
+.acc{
+  text-decoration: none;
+}
+.acc:hover{
+  color:#f1356d;
+}
 
 .navbar {
   padding: 20px;
@@ -46,7 +49,7 @@
     padding: 6px;
     
   }
-  .out :hover, .in:hover{
+  .out:hover, .in:hover{
     color:#f1356d;
   }
   .newbloglink{
