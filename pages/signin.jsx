@@ -1,16 +1,13 @@
-import { privateDecrypt } from 'crypto';
+import { GetServerSideProps } from 'next';
 import {signIn, getSession, getCsrfToken, getProviders} from 'next-auth/react';
+import { redirect } from 'next/dist/server/api-utils';
 
-const inSign = ({providers, csrfToken}) => {
+const inSign = ({providers}) => {
+    
     return ( 
-        <div>
-            <form method='post' action='/api/auth/signin/email'>
-                <input name = "csrfTokem" type="hidden" defaultValue={csrfToken}/>
-                <label>Email address
-                <input type='email' id='email' name='email'/>
-                </label>
-                <button type="submit">Sign in with Email</button>
-            </form>
+      <div>
+      
+
             {Object.values(providers).map((provider) => {
                 return(
                     <div key={provider.name}>
@@ -27,6 +24,15 @@ const inSign = ({providers, csrfToken}) => {
 export default inSign;
 
 export async function getServerSideProps(context) {
+    const session = await getSession({req : context.req});
+    if(session){
+        return{
+        redirect:{
+            destination:'/',
+            permanent: false,
+        },
+    };
+    }
     const providers = await getProviders();
     const csrfToken = await getCsrfToken(context);
     return{

@@ -1,11 +1,15 @@
-import {getSession, useSession} from 'next-auth/react';
+import {getSession, signIn, useSession} from 'next-auth/react';
 
-const Account = ({data}) => {
+
+const Account = () => {
     const {data :session, loading} = useSession();
+  if(!session){
+    signIn();  
+  }
     return ( 
         <div>
-            {session ? <p>{session.user.name}</p> : <p>Please Log In</p>}
-        <div> hi{data}</div>
+            <p>{session.user.name}</p> 
+        
         </div>
         
      );
@@ -13,11 +17,11 @@ const Account = ({data}) => {
  
 export default Account;
 
-export async function getServerSideProps(context){
+/*export async function getServerSideProps(context){
     const session = await getSession(context);
     return{
         props: {
-            data: session ?  'List of 100 blogs' : 'List',
+            session,
         }
     }
-}
+}*/
