@@ -6,6 +6,7 @@ const Account = () => {
   if(!session){
     signIn();  
   }
+  else{
     return ( 
         <div>
             <p>{session.user.name}</p> 
@@ -13,6 +14,7 @@ const Account = () => {
         </div>
         
      );
+    }
 }
  
 export default Account;

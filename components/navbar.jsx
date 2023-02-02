@@ -2,7 +2,7 @@ import Link from "next/link";
 import {signIn,signOut, useSession} from 'next-auth/react'
 const Navbar = () => {
     const {data : session, loading} = useSession();
-    console.log(session, loading);
+    
     return ( 
         <nav className="navi">
         

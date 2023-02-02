@@ -9,6 +9,8 @@ const Create = () => {
     const [isPending, setIsPending] = useState(false);
     const router = useRouter();
 
+    
+
     const {data : blogs, pending, error} = useFetch('http://localhost:8000/blogs');
     var blogid =blogs  &&  blogs[blogs.length-1].id +1;
     const handleSubmit = (e) =>{
@@ -35,6 +37,7 @@ const Create = () => {
                 signIn();
             } else {
                 setLoading(false);
+                setAuthor(session.user.name);
             }
         }
         securePage();
@@ -52,8 +55,7 @@ const Create = () => {
                 onChange = {(e) => setTitle(e.target.value)}/> 
                 <label>Blog Body:</label>
                 <textarea  required value = {body} onChange = {(e) => setBody(e.target.value)}></textarea>
-                <label>Blog Author:</label>
-                <input type="text" required onChange={(e) => setAuthor(e.target.value)}/>
+        
             { !isPending && <button>Add Blog</button>} 
             { isPending && <button disabled>Adding Blog...</button>} 
             </form>
