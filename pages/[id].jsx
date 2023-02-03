@@ -38,20 +38,20 @@ const BlogDetails = ({blog}) => {
              router.push('/');
     });
 }
-    
+    console.log(session,loading);
     
     return ( 
         
         <div className="blog-details">
-            {!session && <h1>Loading...</h1>}
-            {session && (
+            {session === undefined && <h1>Loading...</h1>}
+            
                     <article>
                         <h2>{blog.title}</h2>
                         <p>Written by {blog.author}</p>
                         <div className=""> { blog.body}</div>
-                        {session.user.name === blog.author && <button onClick={handleClick}> Delete </button>}
+                        {session && session.user.name === blog.author && <button onClick={handleClick}> Delete </button>}
                     </article>
-            )}
+            
         </div>
      );
 }
